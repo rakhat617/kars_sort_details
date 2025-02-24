@@ -30,8 +30,17 @@
             <label for="password" class="input-label">Придумайте пароль</label>
             <input type="password" id="password" name="password" class="input-field" placeholder="Введите пароль" required>
         </div>
-        
+
+        <div class="input-group">
+            <label for="password" class="input-label">Подтвердите пароль пароль</label>
+            <input type="password" id="password_confirm" name="password_confirm" class="input-field" placeholder="Введите пароль" required>
+        </div>
+
         <button type="submit" class="submit-button">Зарегистрироваться</button>
+
+        {% if error %}
+            p style="color: red; text-align: center;">{{ error }}</p>
+        {% endif %}
     </form>
 </div>
 

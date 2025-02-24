@@ -13,8 +13,10 @@
         kars_kz
     </div>
     <div class="search-container">
-        <input type="text" name="search_request" placeholder="Поиск...">
-        <a href="{{ url_for('search_results')}}"><button>Поиск</button></a>
+        <form action="/search" method="post">
+            <input type="text" name="search_request" placeholder="Поиск...">
+            <button>Поиск</button>
+        </form>
     </div>
     <div class="search-container">
       
@@ -35,9 +37,6 @@
                     <h2>
                         {{ post[1] }}
                     </h2>               
-                    <h4 class = "post-desc">
-                        {{ post[2] }}
-                    </h4>
                     <h3>
                         {{ post[3] }}
                     </h3>

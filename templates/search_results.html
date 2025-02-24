@@ -8,10 +8,6 @@
 </head>
 <body>
     <main>
-        <!-- <div>
-            <a href=" {{ url_for('order_descending')}} "><button class="profile-button">По убыванию</button></a>
-            <a href=" {{ url_for('order_ascending')}} "><button class="profile-button">По возрастанию</button></a>
-        </div> -->
         <div class="grid_box">
             {% if posts %}
                 {% for post in posts %}
@@ -19,9 +15,6 @@
                         <h2>
                             {{ post[1] }}
                         </h2>               
-                        <h4 class = "post-desc">
-                            {{ post[2] }}
-                        </h4>
                         <h3>
                             {{ post[3] }}
                         </h3>
@@ -32,6 +25,9 @@
                     </div>
                 {% endfor %}
             {% endif %}
+        </div>
+        <div class="profile-buttons">
+            <a href="{{ url_for('get_main') }}"><button class="profile-button">Главная</button></a>
         </div>
     </main>
 </body>
