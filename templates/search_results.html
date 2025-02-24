@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+    <main>
+        <!-- <div>
+            <a href=" {{ url_for('order_descending')}} "><button class="profile-button">По убыванию</button></a>
+            <a href=" {{ url_for('order_ascending')}} "><button class="profile-button">По возрастанию</button></a>
+        </div> -->
+        <div class="grid_box">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="lot">
+                        <h2>
+                            {{ post[1] }}
+                        </h2>               
+                        <h4 class = "post-desc">
+                            {{ post[2] }}
+                        </h4>
+                        <h3>
+                            {{ post[3] }}
+                        </h3>
+                        {% if post[4] %}
+                            <img src="{{ url_for('static', filename=post[4]) }}" alt="Uploaded Image" style="max-width:300px;">
+                        {% endif %}
+                        <a href=" {{ url_for('get_details', id = post[0])}} "><button class="profile-button">Подробнее</button></a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

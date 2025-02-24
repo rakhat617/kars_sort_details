@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <title>Профиль</title>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        kars_kz
+    </div>
+   
+
+    <div class="profile-buttons">
+        <a href=""><button class="profile-button">Профиль</button></a>
+        <a href="{{ url_for('get_main') }}"><button class="profile-button">Главная</button></a>
+    </div>
+</header>
+
+<main>
+    <section class="profile-container">
+        <div class="profile-header">
+            <h1>Добро пожаловать, {{ name }}!</h1>
+            <p>Ваш профиль</p>
+        </div>
+
+        <div class="profile-info">
+            <div class="profile-details">
+                <p><strong>Имя:</strong> {{ name }}</p>
+               
+            </div>
+
+            <div class="profile-actions">
+                <a href=""><button class="profile-button">Редактировать профиль</button></a>
+                <a href="{{ url_for('get_log')}}"><button class="profile-button">Войти</button></a>
+                <a href="{{ url_for('log_out')}}"><button class="profile-button">Выйти</button></a>
+            </div>
+        </div>
+
+        <div class="user-listings">
+            <h2>Ваши объявления</h2>
+            <div class="listings">
+               
+                    <div class="listing">
+                        <h3>Название объявления</h3>
+                        <p>Описание объявления</p>
+                        <a href=""><button class="profile-button">Посмотреть объявление</button></a>
+                        <a href=""><button class="profile-button">Редактировать</button></a>
+                    </div>
+          
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
