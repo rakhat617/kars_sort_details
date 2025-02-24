@@ -40,8 +40,8 @@
                     <h3>
                         {{ post[3] }}
                     </h3>
-                    {% if post[4] %}
-                        <img src="{{ url_for('static', filename=post[4]) }}" alt="Uploaded Image" style="max-width:300px;">
+                    {% if post[4] != "upload_images/None" %}
+                        <img src="{{ url_for('static', filename=post[4]) }}" alt="Image not loaded" style="max-width:300px;">
                     {% endif %}
                     <a href=" {{ url_for('get_details', id = post[0])}} "><button class="profile-button">Пподробнее</button></a>
                 </div>
