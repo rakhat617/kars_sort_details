@@ -173,21 +173,21 @@ def search(): # Почему "пред"? Потому что ее единств
     return redirect(url_for("get_main"))
 
 @app.route("/results/<query>", methods=["GET", "POST"]) # Вот она настоящая страница с результатами поиска, ЮРЛ которой содержит в себе запрос
-def search_results(query): # Логика у этой функции в принципе идентична логике моих функций сортировок
+def search_results(query): # Логика у этой функции в принципе идентична логике моих функций сортировок, но тут даже легче
     connection = sqlite3.connect("post.db") # Тут мы соединяемся с датабазой
     cursor = connection.cursor()
-    cursor.execute(" SELECT title, id FROM post ") # И забираем все названия и айди 
+    cursor.execute(" SELECT * FROM post ") # И забираем все данные
     posts = cursor.fetchall()
     posts_catched = [] # Создаем пустой массив, в который будем апендить все посты что совпали с запросом
     for i in posts: # Итерируем по всем постам
-        if query.lower() in i[0].lower(): # И чекаем название каждого поста с запросом. И заметьте, что тут не строгий поиск
-            # То есть тут достаточно чтобы название поста ВКЛЮЧАЛО в себя запрос, а также наплевать на регистр
+        if query.lower() in i[1].lower() or query.lower() in i[2].lower(): # И чекаем название каждого поста с запросом. И заметьте, что тут не строгий поиск
+            # То есть тут достаточно чтобы название поста ВКЛЮЧАЛО в себя запрос, а не полностью соответствовало, а также наплевать на регистр
             # Но не наплевать на опечатки и ошибки, но тут нужны будут какието тяжкие алгоритмы, даже яндекс не справляется, кек
-            cursor.execute('SELECT * FROM post WHERE id = ?', (i[1],)) # Отбираем по айди все данные из совпавшего поста
-            posts = cursor.fetchone()
-            posts_catched.append(posts) # И аппендим этот пост к массиву совпавших постов
+            posts_catched.append(i) # И аппендим этот пост к массиву совпавших постов
     connection.close()
     return render_template("search_results.html", posts = posts_catched)
+
+
 
 
 if __name__ == '__main__':

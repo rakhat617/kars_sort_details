@@ -19,7 +19,6 @@
         </form>
     </div>
     <div class="search-container">
-      
         <a href="{{ url_for('create' )}}" ><button>Создать объявление</button></a>
     </div>
     <a href=" {{ url_for('get_profile')}} "><button class="profile-button">Профиль</button></a>
@@ -41,7 +40,7 @@
                         {{ post[3] }}
                     </h3>
                     {% if post[4] != "upload_images/None" %}
-                        <img src="{{ url_for('static', filename=post[4]) }}" alt="Image not loaded" style="max-width:300px;">
+                        <a href=" {{ url_for('get_details', id = post[0])}} "><img src="{{ url_for('static', filename=post[4]) }}" alt="Image not loaded" style="max-width:300px;"></a>
                     {% endif %}
                     <a href=" {{ url_for('get_details', id = post[0])}} "><button class="profile-button">Пподробнее</button></a>
                 </div>
